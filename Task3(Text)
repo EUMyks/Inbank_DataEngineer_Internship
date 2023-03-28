@@ -1,0 +1,18 @@
+What are the major differences between ETL and ELT approaches to data 
+transformation?
+
+ETL can be used in near real time cases, using a temporary storage space before transforming data and loading it into the target machine. It doesn't save history and is quite inflexible. 
+
+ELT allows for more modifications in data structure and queries with loading data into a permanent storage base before applying logic to it.
+This is the newer structure that allows for smarter use of cloud storage and computing
+
+
+ What are the major differences between data analytics and data engineering?
+ 
+ One is focused on getting information out of data to make decisions.
+ Data engineer is focused on doing the groundwork for data analysist - building the database structures and flows.
+ 
+Is there any specific software/tool/technology you are really interested in working with?
+
+I really like shaving time off processes and I know little of ELT tools. Thus getting to learn and use them would be a really exiting experience. 
+I liked the exercises given here, however I wish they were a harder and provided a challange. :D
