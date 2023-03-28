@@ -1,0 +1,23 @@
+/*
+Task 1 
+Results in the requested data of sums in EUR per day filtered by actively used currencies and non blacklisted accounts.
+Done by Teuli
+*/
+--This was solved using PostgreSQL
+SELECT 
+SUM(
+--When we have to transform PLN to EUR
+CASE WHEN c.currency_code = 'PLN'
+THEN EXCHANGE_RATE_TO_EUR * amount 
+-- for redundency I check if the currerncy I use is EUR
+WHEN c.currency_code = 'EUR' 
+THEN amount END) AS "SUM(AMOUNT_EUR)", 
+p.transaction_date  AS TRANSACTION_DATE
+FROM payments p 
+LEFT JOIN currencies c ON p.currency = c.currency_id 
+JOIN currency_rates cr ON p.transaction_date = cr.exchange_date 
+--Checking if the sender is blacklisted
+WHERE p.user_id_sender NOT IN (SELECT USER_ID FROM blacklist b2) AND 
+--Or currency out of use
+c.end_date IS NULL
+GROUP BY transaction_date;
